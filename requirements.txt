@@ -1,0 +1,13 @@
+pandas
+torch
+numpy
+
+timm
+tqdm
+sklearn
+Pillow
+transformers
+openpyxl
+pydicom
+nltk
+albumentations
