@@ -33,7 +33,7 @@ def train_image_text_segmentation(config, batch_size=8, epoch=1, dir_base = "/ho
     save_location = config["save_location"]
 
     #dataframe_location = os.path.join(dir_base, "Zach_Analysis/candid_data/pneumothorax_with_multisegmentation_text_negatives_balanced_df.xlsx")
-    dataframe_location = os.path.join(dir_base, 'Zach_Analysis/candid_data/pneumothorax_with_multisegmentation_positive_text_df.xlsx')
+    #dataframe_location = os.path.join(dir_base, 'Zach_Analysis/candid_data/pneumothorax_with_multisegmentation_positive_text_df.xlsx')
     #dataframe_location = os.path.join(dir_base, 'Zach_Analysis/candid_data/pneumothorax_with_text_df.xlsx') #pneumothorax_df chest_tube_df rib_fracture
     #dataframe_location = os.path.join(dir_base, 'Zach_Analysis/candid_data/pneumothorax_large_df.xlsx')
     # gets the candid labels and saves it off to the location
@@ -41,13 +41,16 @@ def train_image_text_segmentation(config, batch_size=8, epoch=1, dir_base = "/ho
     #df = get_all_text_image_pairs(dir_base=dir_base)
     #print(df)
     #df.to_excel(dataframe_location, index=False)
+    dataframe_location = 'image_name_text_label_redacted.csv'
 
     # reads in the dataframe as it doesn't really change to save time
-    df = pd.read_excel(dataframe_location, engine='openpyxl')
+    #df = pd.read_excel(dataframe_location, engine='openpyxl')
+    df = read_csv(dataframe_location)
     df.set_index("image_id", inplace=True)
 
     # location of synonyms scraped from Radlex
-    wordReplacementPath = os.path.join(dir_base, 'Zach_Analysis/lymphoma_data/words_and_their_synonyms.xlsx')
+    #wordReplacementPath = os.path.join(dir_base, 'Zach_Analysis/lymphoma_data/words_and_their_synonyms.xlsx')
+    wordReplacementPath = os.path.join('words_and_their_synonyms.xlsx')
     dfWord = pd.read_excel(wordReplacementPath, engine='openpyxl')
     dfWord.set_index("word", inplace=True)
     # sets up the list of synonyms obtained from Radlex
